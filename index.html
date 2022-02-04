@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambola Tickets</title>
+  </head>
+  <style>
+    table,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td,
+    tr {
+      width: 30px;
+      height: 30px;
+      padding: 15px;
+      font-size: 20px;
+    }
+
+    table {
+      margin: 100px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>Your Tambola ticket is ready:</h1>
+      <table class="center">
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td>21</td>
+          <td></td>
+          <td>42</td>
+          <td>53</td>
+          <td></td>
+          <td>76</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>12</td>
+          <td></td>
+          <td>34</td>
+          <td></td>
+          <td>58</td>
+          <td>65</td>
+          <td></td>
+          <td>83</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td></td>
+          <td>27</td>
+          <td></td>
+          <td>49</td>
+          <td></td>
+          <td></td>
+          <td>77</td>
+          <td>88</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      var rand = Math.floor(Math.random() * 10) + 1;
+      console.log(rand);
+    </script>
+  </body>
+</html>
