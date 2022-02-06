@@ -131,14 +131,27 @@
           for (let j = 0; j < ticketRows[i].length; j++) {
             let temp;
             if (i === 0) {
-              if (ticketRows[i][j] === 9) temp = getRandomInt(80, 90);
+              if (ticketRows[i][j] === 1) temp = getRandomInt(1, 9);
+              else if (ticketRows[i][j] === 9) temp = getRandomInt(80, 90);
               else
                 temp = getRandomInt(
-                  ticketRows[i][j] * 10 - 9,
+                  (ticketRows[i][j] - 1) * 10,
                   ticketRows[i][j] * 10 - 1
                 );
             } else {
-              if (ticketRows[i][j] === 9) {
+              if (ticketRows[i][j] === 1) {
+                temp = getRandomInt(1, 9);
+                while (
+                  (ticketNumbers[i - 1][0] === temp &&
+                    ticketNumbers[i - 1][0] !== -1) ||
+                  (i === 2 &&
+                    ticketNumbers[i - 2][0] === temp &&
+                    ticketNumbers[i - 2][0] !== -1)
+                ) {
+                  //   console.log(i, temp, ticketNumbers[i - 1][8]);
+                  temp = getRandomInt(1, 9);
+                }
+              } else if (ticketRows[i][j] === 9) {
                 temp = getRandomInt(80, 90);
                 while (
                   (ticketNumbers[i - 1][8] === temp &&
@@ -152,7 +165,7 @@
                 }
               } else {
                 temp = getRandomInt(
-                  ticketRows[i][j] * 10 - 9,
+                  (ticketRows[i][j] - 1) * 10,
                   ticketRows[i][j] * 10 - 1
                 );
                 while (
@@ -164,7 +177,7 @@
                 ) {
                   //   console.log("here");
                   temp = getRandomInt(
-                    ticketRows[i][j] * 10 - 9,
+                    (ticketRows[i][j] - 1) * 10,
                     ticketRows[i][j] * 10 - 1
                   );
                 }
@@ -178,7 +191,7 @@
       };
 
       const ticketNumbers = generateNumbers();
-    //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+      //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
       //   console.log(count);
 
       const sortTicketNumbers = () => {
@@ -256,21 +269,21 @@
       };
 
       sortTicketNumbers();
-    //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+      //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
 
-    const printTicket = () => {
-        const table = document.getElementById('ticket');
-        for(let i=0;i<ticketNumbers.length;i++) {
-            let row=table.insertRow();
-            for(let j=0;j<ticketNumbers[i].length;j++){
-                const cell=row.insertCell();
-                cell.innerHTML=ticketNumbers[i][j]!==-1 ? ticketNumbers[i][j] : null;
-            }
+      const printTicket = () => {
+        const table = document.getElementById("ticket");
+        for (let i = 0; i < ticketNumbers.length; i++) {
+          let row = table.insertRow();
+          for (let j = 0; j < ticketNumbers[i].length; j++) {
+            const cell = row.insertCell();
+            cell.innerHTML =
+              ticketNumbers[i][j] !== -1 ? ticketNumbers[i][j] : null;
+          }
         }
-    }
+      };
 
-    printTicket();
-    
+      printTicket();
     </script>
   </body>
 </html>
