@@ -37,8 +37,8 @@
   <body>
     <div>
       <h1>Your Tambola ticket is ready:</h1>
-      <table class="center">
-        <tr>
+      <table id="ticket" class="center">
+        <!-- <tr>
           <td>1</td>
           <td></td>
           <td>21</td>
@@ -70,7 +70,7 @@
           <td></td>
           <td>77</td>
           <td>88</td>
-        </tr>
+        </tr> -->
       </table>
     </div>
 
@@ -178,7 +178,7 @@
       };
 
       const ticketNumbers = generateNumbers();
-      console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+    //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
       //   console.log(count);
 
       const sortTicketNumbers = () => {
@@ -208,14 +208,14 @@
                 z = ticketNumbers[2][i];
               //   console.log(x, y, z);
               if (z > y && z > x) {
-                console.log(x, y, z);
+                // console.log(x, y, z);
                 if (x > y)
                   [ticketNumbers[0][i], ticketNumbers[1][i]] = [
                     ticketNumbers[1][i],
                     ticketNumbers[0][i],
                   ];
               } else if (y > x && y > z) {
-                console.log(x, y, z);
+                // console.log(x, y, z);
                 if (z > x) {
                   [ticketNumbers[2][i], ticketNumbers[1][i]] = [
                     ticketNumbers[1][i],
@@ -233,7 +233,7 @@
                   ];
                 }
               } else if (x > y && x > z) {
-                console.log(x, y, z);
+                // console.log(x, y, z);
                 if (z > y) {
                   [
                     ticketNumbers[0][i],
@@ -256,7 +256,21 @@
       };
 
       sortTicketNumbers();
-      console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+    //   console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+
+    const printTicket = () => {
+        const table = document.getElementById('ticket');
+        for(let i=0;i<ticketNumbers.length;i++) {
+            let row=table.insertRow();
+            for(let j=0;j<ticketNumbers[i].length;j++){
+                const cell=row.insertCell();
+                cell.innerHTML=ticketNumbers[i][j]!==-1 ? ticketNumbers[i][j] : null;
+            }
+        }
+    }
+
+    printTicket();
+    
     </script>
   </body>
 </html>
