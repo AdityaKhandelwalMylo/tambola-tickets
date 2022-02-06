@@ -141,12 +141,9 @@
               if (ticketRows[i][j] === 9) {
                 temp = getRandomInt(80, 90);
                 while (
-                  (i === 1 &&
-                    ticketNumbers[i - 1][8] === temp &&
+                  (ticketNumbers[i - 1][8] === temp &&
                     ticketNumbers[i - 1][8] !== -1) ||
                   (i === 2 &&
-                    ticketNumbers[i - 1][8] === temp &&
-                    ticketNumbers[i - 1][8] !== -1 &&
                     ticketNumbers[i - 2][8] === temp &&
                     ticketNumbers[i - 2][8] !== -1)
                 ) {
@@ -158,27 +155,23 @@
                   ticketRows[i][j] * 10 - 9,
                   ticketRows[i][j] * 10 - 1
                 );
-                console.log(
-                  temp,
-                  ticketRows[i][j],
-                  ticketRows[i - 1][ticketRows[i][j] - 1],
-                  i >= 2 && ticketRows[i - 2][ticketRows[i][j] - 1]
-                );
+                // console.log(
+                //   temp,
+                //   i === 1,
+                //   ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp,
+                //   ticketNumbers[i - 1][ticketRows[i][j] - 1] !== -1,
+                //   i === 2,
+                //   i >= 2 && ticketNumbers[i - 2][ticketRows[i][j] - 1] === temp,
+                //   i >= 2 && ticketNumbers[i - 2][ticketRows[i][j] - 1] !== -1
+                // );
                 while (
-                  (i === 1 &&
-                    ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp &&
+                  (ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp &&
                     ticketNumbers[i - 1][ticketRows[i][j] - 1] !== -1) ||
                   (i === 2 &&
-                    ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp &&
-                    ticketNumbers[i - 1][ticketRows[i][j] - 1] !== -1 &&
                     ticketNumbers[i - 2][ticketRows[i][j] - 1] === temp &&
                     ticketNumbers[i - 2][ticketRows[i][j] - 1] !== -1)
                 ) {
-                  console.log(
-                    i,
-                    temp,
-                    ticketNumbers[i - 1][ticketRows[i][j] - 1]
-                  );
+                  //   console.log("here");
                   temp = getRandomInt(
                     ticketRows[i][j] * 10 - 9,
                     ticketRows[i][j] * 10 - 1
