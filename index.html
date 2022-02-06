@@ -147,7 +147,7 @@
                     ticketNumbers[i - 2][8] === temp &&
                     ticketNumbers[i - 2][8] !== -1)
                 ) {
-                  console.log(i, temp, ticketNumbers[i - 1][8]);
+                  //   console.log(i, temp, ticketNumbers[i - 1][8]);
                   temp = getRandomInt(80, 90);
                 }
               } else {
@@ -155,15 +155,6 @@
                   ticketRows[i][j] * 10 - 9,
                   ticketRows[i][j] * 10 - 1
                 );
-                // console.log(
-                //   temp,
-                //   i === 1,
-                //   ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp,
-                //   ticketNumbers[i - 1][ticketRows[i][j] - 1] !== -1,
-                //   i === 2,
-                //   i >= 2 && ticketNumbers[i - 2][ticketRows[i][j] - 1] === temp,
-                //   i >= 2 && ticketNumbers[i - 2][ticketRows[i][j] - 1] !== -1
-                // );
                 while (
                   (ticketNumbers[i - 1][ticketRows[i][j] - 1] === temp &&
                     ticketNumbers[i - 1][ticketRows[i][j] - 1] !== -1) ||
@@ -188,12 +179,84 @@
 
       const ticketNumbers = generateNumbers();
       console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
+      //   console.log(count);
 
       const sortTicketNumbers = () => {
-        for (let i = 1; i < ticketNumbers.length; i++) {
-          for (j = 0; j < ticketNumbers[i].length; j++) {}
+        for (let i = 0; i < ticketNumbers[0].length; i++) {
+          if (count[i] > 1) {
+            if (ticketNumbers[0][i] === -1) {
+              if (ticketNumbers[1][i] > ticketNumbers[2][i])
+                [ticketNumbers[1][i], ticketNumbers[2][i]] = [
+                  ticketNumbers[2][i],
+                  ticketNumbers[1][i],
+                ];
+            } else if (ticketNumbers[1][i] === -1) {
+              if (ticketNumbers[0][i] > ticketNumbers[2][i])
+                [ticketNumbers[0][i], ticketNumbers[2][i]] = [
+                  ticketNumbers[2][i],
+                  ticketNumbers[0][i],
+                ];
+            } else if (ticketNumbers[2][i] === -1) {
+              if (ticketNumbers[0][i] > ticketNumbers[1][i])
+                [ticketNumbers[0][i], ticketNumbers[1][i]] = [
+                  ticketNumbers[1][i],
+                  ticketNumbers[0][i],
+                ];
+            } else {
+              let x = ticketNumbers[0][i],
+                y = ticketNumbers[1][i],
+                z = ticketNumbers[2][i];
+              //   console.log(x, y, z);
+              if (z > y && z > x) {
+                console.log(x, y, z);
+                if (x > y)
+                  [ticketNumbers[0][i], ticketNumbers[1][i]] = [
+                    ticketNumbers[1][i],
+                    ticketNumbers[0][i],
+                  ];
+              } else if (y > x && y > z) {
+                console.log(x, y, z);
+                if (z > x) {
+                  [ticketNumbers[2][i], ticketNumbers[1][i]] = [
+                    ticketNumbers[1][i],
+                    ticketNumbers[2][i],
+                  ];
+                } else {
+                  [
+                    ticketNumbers[0][i],
+                    ticketNumbers[1][i],
+                    ticketNumbers[2][i],
+                  ] = [
+                    ticketNumbers[2][i],
+                    ticketNumbers[0][i],
+                    ticketNumbers[1][i],
+                  ];
+                }
+              } else if (x > y && x > z) {
+                console.log(x, y, z);
+                if (z > y) {
+                  [
+                    ticketNumbers[0][i],
+                    ticketNumbers[1][i],
+                    ticketNumbers[2][i],
+                  ] = [
+                    ticketNumbers[1][i],
+                    ticketNumbers[2][i],
+                    ticketNumbers[0][i],
+                  ];
+                } else
+                  [ticketNumbers[0][i], ticketNumbers[2][i]] = [
+                    ticketNumbers[2][i],
+                    ticketNumbers[0][i],
+                  ];
+              }
+            }
+          }
         }
       };
+
+      sortTicketNumbers();
+      console.log(ticketNumbers[0], ticketNumbers[1], ticketNumbers[2]);
     </script>
   </body>
 </html>
