@@ -258,7 +258,13 @@
         await printTicket();
       };
 
+      let start = Date.now();
+
       for (let i = 0; i < 1000; i++) ticketGeneratorWrapper();
+
+      let end = Date.now();
+
+      console.log(`Execution time: ${end - start} ms`);
     </script>
   </body>
 </html>
